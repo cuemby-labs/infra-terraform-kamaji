@@ -1,9 +1,25 @@
-locals {
-  context = var.context
+#
+# Netris Operator Resources
+#
+
+resource "kubernetes_namespace" "kamaji" {
+  metadata {
+    name = var.namespace_name
+  }
 }
 
-module "submodule" {
-  source = "./modules/submodule"
+resource "helm_release" "kamaji" {
+  name       = "kamaji"
+  repository = "https://clastix.github.io/charts"
+  chart      = "kamaji"
+  version    = var.chart_version
+  namespace  = var.namespace_name
+}
 
-  message = "Hello, submodule"
+#
+# Walrus Information
+#
+
+locals {
+  context = var.context
 }

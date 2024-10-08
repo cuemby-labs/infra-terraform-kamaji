@@ -1,10 +1,27 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for template walrus-template-template
+  title: OpenAPI schema for template .
 components:
   schemas:
     variables:
       type: object
+      properties:
+        namespace_name:
+          title: Namespace Name
+          type: string
+          description: The name of the Kubernetes namespace.
+          default: kamaji-system
+          x-walrus-ui:
+            group: Basic
+            order: 2
+        chart_version:
+          title: Chart Version
+          type: string
+          description: The version of the Kamaji Helm release chart.
+          default: 1.0.0
+          x-walrus-ui:
+            group: Basic
+            order: 3
       x-walrus-ui:
         groupOrder:
         - Basic
